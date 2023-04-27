@@ -1,3 +1,9 @@
 body {
-    background-color: darkblue;
+  background-color: darkblue;
+}
+
+header {
+  background-color: darkorange;
+  text-align: center;
+  padding: 20px;
 }
