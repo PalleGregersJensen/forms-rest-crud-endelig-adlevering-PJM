@@ -1,3 +1,7 @@
-"use strict"
+"use strict";
 
-console.log("JS kører");
+window.addEventListener("load", startApp);
+
+function startApp() {
+  console.log("JS kører");
+}
