@@ -1,0 +1,31 @@
+// Hermed et udkast til json fil med data. (kommentarer er ikke tilladt i json filer og skal slettes)
+//vi har snakket om at biler kunne være et tema
+{
+    "brand": "car brand",
+    "name": "car name",
+    "topspeed": 210,
+    "weightKilograms": 4300,
+    "gears": "manual",
+    "fourwheeldrive": false
+}
+
+//det kunne også være film
+{
+    "title": "film title",
+    "director": "writer name",
+    "lengthminutes": 127,
+    "yearpublished": 2004,
+    "color": true,
+    "description": "this film is about something something..."
+}
+
+//eller bøger
+{
+    "title": "book title",
+    "writer": "writer name",
+    "pages": 543,
+    "yearpublished": 1997,
+    "prizewinning": false,
+    "originallanguage": "English",
+    "description": "this film is about something something..."
+}
