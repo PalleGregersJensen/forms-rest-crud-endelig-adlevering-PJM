@@ -68,6 +68,42 @@
       "yearpublished": 1988,
       "color": false,
       "description": "They influence our decisions without us knowing it. They numb our senses without us feeling it. They control our lives without us realizing it. They live."
+    },
+    "07": {
+      "title": "The Shawshank Redemption",
+      "image": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg?20200628124114",
+      "director": "Frank Darabont",
+      "lengthminutes": 142,
+      "yearpublished": 1994,
+      "color": true,
+      "description": "Over the course of several years, two convicts form a friendship, seeking consolation and, eventually, redemption through basic compassion."
+    },
+    "08": {
+      "title": "GoldenEye",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/2/24/GoldenEye_-_UK_cinema_poster.jpg/220px-GoldenEye_-_UK_cinema_poster.jpg",
+      "director": "Martin Campbell",
+      "lengthminutes": 130,
+      "yearpublished": 1996,
+      "color": true,
+      "description": "Years after a friend and fellow 00 agent is killed on a joint mission, a Russian crime syndicate steals a secret space-based weapons program known as 'GoldenEye' and James Bond has to stop them from using it."
+    },
+    "09": {
+      "title": "Pulp Fiction",
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg",
+      "director": "Quentin Tarantino",
+      "lengthminutes": 154,
+      "yearpublished": 1994,
+      "color": true,
+      "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption."
+    },
+    "10": {
+      "title": "The Green mile",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e2/The_Green_Mile_%28movie_poster%29.jpg/220px-The_Green_Mile_%28movie_poster%29.jpg",
+      "director": "Frank Darabont",
+      "lengthminutes": 189,
+      "yearpublished": 1999,
+      "color": false,
+      "description": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift."
     }
   }
 }
