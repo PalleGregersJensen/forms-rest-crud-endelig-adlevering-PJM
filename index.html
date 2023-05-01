@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>DataObject CRUD Database</h1>
+      <h1>DataObject CRUD Database</h1>
     </header>
-    
+
+    <!-- article for posts -->
+    <div id="movies" class="grid-container"></div>
 
     <!-- dialog - create new post -->
     <dialog id="create-post-dialog">
       <h2>Create new post</h2>
       <form action="" id="create-post-form">
         <label for="new-image">Image:</label>
-        <input type="text" id="new-image" name="image" placeholder="type in url" />
+        <input
+          type="text"
+          id="new-image"
+          name="image"
+          placeholder="type in url"
+        />
 
         <label for="new-titel">Titel:</label>
-        <input type="text" id="new-titel" name="title" placeholder="type titel" />
+        <input
+          type="text"
+          id="new-titel"
+          name="title"
+          placeholder="type titel"
+        />
 
         <label for="new-description">body:</label>
-        <input type="text" id="new-body" name="body" placeholder="type a description" />
+        <input
+          type="text"
+          id="new-body"
+          name="body"
+          placeholder="type a description"
+        />
 
         <button>Create Post</button>
       </form>
@@ -36,14 +53,29 @@
       <h2>Update Post</h2>
       <form action="" id="update-post-form">
         <label for="update-title">Title:</label>
-        <input type="text" name="title" id="update-title" placeholder="type a new title..."/>
-        
+        <input
+          type="text"
+          name="title"
+          id="update-title"
+          placeholder="type a new title..."
+        />
+
         <label for="body">Description</label>
-        <input type="text" name="body" id="update-body" placeholder="type a new description text..."/>
-        
+        <input
+          type="text"
+          name="body"
+          id="update-body"
+          placeholder="type a new description text..."
+        />
+
         <label for="update-image">Image:</label>
-        <input type="text" name="image" id="update-image" placeholder="type a new url address..."/>
-        
+        <input
+          type="text"
+          name="image"
+          id="update-image"
+          placeholder="type a new url address..."
+        />
+
         <button>Update</button>
       </form>
     </dialog>
@@ -59,5 +91,5 @@
     </dialog>
 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
