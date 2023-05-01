@@ -13,7 +13,23 @@
       <h1>DataObject CRUD Database</h1>
     </header>
     <main>
+
+      <!-- search sort & create actions -->
+
+      <section class="actions-container">
+        <input type="search" id="input-search" placeholder="search by title..." />
+
+        <button id="create-new-post-btn">Create New Post</button>
+
+        <select name="sort-by" id="sort-by">
+          <option value="none">None</option>
+          <option value="title">Title</option>
+          <option value="body">Description</option>
+        </select>
+      </section>
+
       <!-- article for posts -->
+      
       <div id="movies" class="grid-container"></div>
     </main>
 

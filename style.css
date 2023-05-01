@@ -31,6 +31,15 @@ img {
 
 /* ---------- grid container styling ---------- */
 
+.actions-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 50px;
+  padding: 35px;
+}
+
+/* ---------- grid container styling ---------- */
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr;
