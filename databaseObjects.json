@@ -2,7 +2,7 @@
   "movies": {
     "00": {
       "title": "The Mirror",
-      "image": "https://live.staticflickr.com/5681/23811345431_b9fc037cfe_c.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/en/f/fa/The_Mirror_%281975_film%29.png",
       "director": "Andrei Tarkovsky",
       "lengthminutes": 107,
       "yearpublished": 1975,
@@ -42,7 +42,7 @@
 
     "04": {
       "title": "American Movie",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Mark_Borchardt_Sandwich.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/en/a/aa/Americanmovie.jpg",
       "director": "Chris Smith",
       "lengthminutes": 107,
       "yearpublished": 1999,
@@ -52,7 +52,7 @@
 
     "05": {
       "title": "Satantango",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Nagyt%C5%91ke_ny%C3%A1ri_pusztaBlack_and_white.JPG",
+      "image": "https://upload.wikimedia.org/wikipedia/en/1/18/S%C3%A1t%C3%A1ntang%C3%B3_dvd_cover.jpg",
       "director": "Bela Tarr",
       "lengthminutes": 439,
       "yearpublished": 1994,
@@ -62,7 +62,7 @@
 
     "06": {
       "title": "They Live",
-      "image": "https://live.staticflickr.com/7427/8965494161_be25788550_b.jpg",
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/3d/1988They_Live_poster300.jpg",
       "director": "John Carpenter",
       "lengthminutes": 94,
       "yearpublished": 1988,
@@ -102,8 +102,35 @@
       "director": "Frank Darabont",
       "lengthminutes": 189,
       "yearpublished": 1999,
-      "color": false,
+      "color": true,
       "description": "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift."
+    },
+    "11": {
+      "title": "Grizzly Man",
+      "image": "https://upload.wikimedia.org/wikipedia/en/e/e5/Grizzly_man_ver2.jpg",
+      "director": "Werner Herzog",
+      "lengthminutes": 103,
+      "yearpublished": 2005,
+      "color": true,
+      "description": "A devastating and heart-rending take on grizzly bear activists Timothy Treadwell and Amie Huguenard, who were killed in October of 2003 while living among grizzly bears in Alaska."
+    },
+    "12": {
+      "title": "Apocalypse Now",
+      "image": "https://upload.wikimedia.org/wikipedia/en/c/c2/Apocalypse_Now_poster.jpg",
+      "director": "Francis Ford Coppola",
+      "lengthminutes": 147,
+      "yearpublished": 1979,
+      "color": true,
+      "description": "A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel who sees himself as a god."
+    },
+    "13": {
+      "title": "Fargo",
+      "image": "https://upload.wikimedia.org/wikipedia/en/3/33/Fargo_%281996_movie_poster%29.jpg",
+      "director": "Joel & Ethan Coen",
+      "lengthminutes": 98,
+      "yearpublished": 1996,
+      "color": true,
+      "description": "Minnesota car salesman Jerry Lundegaard's inept crime falls apart due to his and his henchmen's bungling and the persistent police work of the quite pregnant Marge Gunderson."
     }
   }
 }
