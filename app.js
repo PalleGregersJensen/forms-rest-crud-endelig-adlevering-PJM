@@ -1,8 +1,7 @@
 "use strict";
 // ========== Globale variables ========== //
 
-const endpoint =
-  "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
 
 let movies;
 
@@ -12,6 +11,10 @@ window.addEventListener("load", startApp);
 function startApp() {
   // update the grid of movies: get and show all movies
   updateMovieGrid();
+
+  // adding eventlisteners for search functions
+  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
+  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 }
 
 // ========== READ ========== //
@@ -25,15 +28,14 @@ async function getMovies() {
 
 // ========== Update Function ========== //
 async function updateMovieGrid() {
-  document.querySelector("#movies").innerHTML = ""; // tømmer hele div'en for movie elementer
   movies = await getMovies();
-
   showMovies(movies);
 }
 
 // ========== HTML opsætning ========== //
 
 function showMovies(movieList) {
+  document.querySelector("#movies").innerHTML = ""; // tømmer hele div'en for movie elementer
   for (const movie of movieList) {
     showMovie(movie);
   }
@@ -63,4 +65,24 @@ function prepareMovieData(dataObjekt) {
     movieArray.push(movie);
   }
   return movieArray;
+}
+
+// ========== search functions ========== //
+function inputSearchChanged() {
+  const value = this.value;
+  const moviesToShow = searchMovies(value);
+  showMovies(moviesToShow);
+}
+
+function searchMovies(searchValue) {
+  searchValue = searchValue.toLowerCase();
+
+  const results = movies.filter(checkTitle);
+
+  function checkTitle(movie) {
+    const title = movie.title.toLowerCase();
+    return title.includes(searchValue);
+  }
+
+  return results;
 }
