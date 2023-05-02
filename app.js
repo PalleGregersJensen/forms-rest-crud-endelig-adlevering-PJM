@@ -77,7 +77,6 @@ function updateMovieClicked(event) {
 async function updateMovie(id, title, description, image) {
   const movieToUpdate = { title, description, image }; // movie update to update
   const json = JSON.stringify(movieToUpdate); // convert the JS objekt to JSON string
-  console.log(movieToUpdate);
   const response = await fetch(`${endpoint}/movies/${id}.json`, {
     method: "PUT",
     body: json,
