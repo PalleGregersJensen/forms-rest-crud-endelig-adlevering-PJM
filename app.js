@@ -2,19 +2,7 @@
 // ========== Globale variables ========== //
 
 const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
-
-
 let movies;
-
-// ========== Eventlisteners ========== //
-  document
-    .querySelector("#form-delete-movie")
-    .addEventListener("submit", deleteMovieClicked);
-
-  document
-    .querySelector("#form-delete-movie .btn-cancel")
-    .addEventListener("click", cancelDelete);
-
 
 // ========== Load & startup ========== //
 window.addEventListener("load", startApp);
@@ -22,7 +10,11 @@ window.addEventListener("load", startApp);
 function startApp() {
   // update the grid of movies: get and show all movies
   updateMovieGrid();
-
+  //eventlisteners for delete
+  document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
+  document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
+  // eventlisteners for update
+  document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
   // adding eventlisteners for search functions
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
@@ -43,12 +35,10 @@ function deleteMovieClicked(event) {
   deleteMovie(id);
 }
 
-
 function cancelDelete() {
   console.log("cancel btn clicked");
   document.querySelector("#dialog-delete-movie").close();
 }
-
 
 async function deleteMovie(id) {
   const response = await fetch(`${endpoint}/movies/${id}.json`, {
@@ -61,16 +51,37 @@ async function deleteMovie(id) {
   }
 }
 
-
 // ========== Update Function ========== //
 async function updateMovieGrid() {
   movies = await getMovies();
   showMovies(movies);
 }
 
+function updateMovieClicked(event) {
+  const form = event.target;
 
+  const title = form.title.value;
+  const description = form.description.value;
+  const image = form.image.value;
 
+  const id = form.getAttribute("data-id");
+  updateMovie(id, title, description, image);
+}
 
+async function updateMovie(id, title, description, image) {
+  const movieToUpdate = { title, description, image }; // movie update to update
+  const json = JSON.stringify(movieToUpdate); // convert the JS objekt to JSON string
+  console.log(movieToUpdate);
+  const response = await fetch(`${endpoint}/movies/${id}.json`, {
+    method: "PUT",
+    body: json,
+  });
+
+  if (response.ok) {
+    console.log("Movie succesfully updatet in firebase");
+    updateMovieGrid();
+  }
+}
 
 // ========== HTML opsætning ========== //
 
@@ -96,22 +107,24 @@ function showMovie(movieObject) {
   );
 
   // add event listeners to .btn-delete and .btn-update
-  document
-    .querySelector("#movies article:last-child .btn-delete")
-    .addEventListener("click", deleteClicked);
-  
+  document.querySelector("#movies article:last-child .btn-delete").addEventListener("click", deleteClicked);
+  document.querySelector("#movies article:last-child .btn-update").addEventListener("click", updateClicked);
+
   function deleteClicked() {
     console.log("Delete button clicked");
-    document.querySelector("#dialog-delete-title").textContent =
-      movieObject.title;
-    document
-      .querySelector("#form-delete-movie")
-      .setAttribute("data-id", movieObject.id);
+    document.querySelector("#dialog-delete-title").textContent = movieObject.title;
+    document.querySelector("#form-delete-movie").setAttribute("data-id", movieObject.id);
     document.querySelector("#dialog-delete-movie").showModal();
   }
 
-  
-  
+  function updateClicked() {
+    const updateForm = document.querySelector("#update-movie-form");
+    updateForm.title.value = movieObject.title;
+    updateForm.description.value = movieObject.description;
+    updateForm.image.value = movieObject.image;
+    updateForm.setAttribute("data-id", movieObject.id);
+    document.querySelector("#update-movie-dialog").showModal();
+  }
 }
 
 // ========== Objekt til array ========== //
