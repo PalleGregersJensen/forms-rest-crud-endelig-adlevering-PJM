@@ -10,6 +10,11 @@ window.addEventListener("load", startApp);
 function startApp() {
   // update the grid of movies: get and show all movies
   updateMovieGrid();
+
+  //eventlisteners for create
+  document.querySelector("#create-new-post-btn").addEventListener("click", showCreateMovie);
+  document.querySelector("#create-post-form").addEventListener("submit", createMovieClicked);
+
   //eventlisteners for delete
   document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
   document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
@@ -27,6 +32,47 @@ async function getMovies() {
 
   const movies = prepareMovieData(data);
   return movies;
+}
+
+// ========== Create Function ========== //
+
+function showCreateMovie(event) {
+  event.preventDefault;
+  document.querySelector("#create-post-dialog").showModal();
+}
+
+function createMovieClicked(event) {
+  console.log("createMoviesClicked called..")
+  const form = event.target;
+
+  const image = form.image.value;
+  const title = form.title.value;
+  const description = form.description.value;
+
+  createMovie(image, title, description);
+
+  form.reset();
+  document.querySelector("#create-post-dialog").close();
+}
+
+async function createMovie(image, title, description) {
+  const newMovie = {
+    image: image,
+    title: title,
+    description: description
+  };
+
+  const json = JSON.stringify(newMovie);
+
+  const response = await fetch(`${endpoint}/movies.json`, {
+    method: "POST",
+    body: json
+  });
+
+  if (response.ok) {
+    console.log("Congratulations, new movie was created succesfully!")
+    updateMovieGrid();
+  }
 }
 
 // ========== Delete Function ========== //
