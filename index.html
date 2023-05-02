@@ -52,24 +52,29 @@
       </form>
     </dialog>
 
-    <!-- dialog - update post -->
-    <dialog id="update-post-dialog">
-      <h2>Update Post</h2>
-      <form action="" id="update-post-form">
+    <!-- dialog - update movie -->
+    <dialog id="update-movie-dialog">
+      <h2>Update Movie</h2>
+      <form id="update-movie-form" method="dialog">
         <label for="update-title">Title:</label>
-        <input type="text" name="title" id="update-title" placeholder="type a new title..." />
+        <input type="text" name="title" id="update-title" placeholder="type a new title..." required />
 
-        <label for="body">Description</label>
-        <input type="text" name="body" id="update-body" placeholder="type a new description text..." />
+        <label for="description">Description</label>
+        <input
+          type="text"
+          name="description"
+          id="update-description"
+          placeholder="type a new description text..."
+          required
+        />
 
         <label for="update-image">Image:</label>
-        <input type="text" name="image" id="update-image" placeholder="type a new url address..." />
+        <input type="url" name="image" id="update-image" placeholder="type a new url address..." required />
 
         <button>Update</button>
       </form>
     </dialog>
 
-    
     <!-- dialog - delete post -->
     <dialog id="dialog-delete-movie">
       <h2>Are you sure you want to delete?!</h2>
@@ -79,7 +84,6 @@
         <button>Delete</button>
       </form>
     </dialog>
-    
 
     <script src="app.js"></script>
   </body>
