@@ -12,38 +12,23 @@ function startApp() {
   updateMovieGrid();
 
   //eventlisteners for create
-  document
-    .querySelector("#create-new-post-btn")
-    .addEventListener("click", showCreateMovie);
-  document
-    .querySelector("#create-post-form")
-    .addEventListener("submit", createMovieClicked);
+  document.querySelector("#create-new-post-btn").addEventListener("click", showCreateMovie);
+  document.querySelector("#create-post-form").addEventListener("submit", createMovieClicked);
 
   //eventlisteners for delete
-  document
-    .querySelector("#form-delete-movie")
-    .addEventListener("submit", deleteMovieClicked);
-  document
-    .querySelector("#form-delete-movie .btn-cancel")
-    .addEventListener("click", cancelDelete);
+  document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
+  document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
+  
   // eventlisteners for update
-  document
-    .querySelector("#update-movie-form")
-    .addEventListener("submit", updateMovieClicked);
-  document
-    .querySelector("#update-movie-form .btn-cancel")
-    .addEventListener("click", cancelUpdate);
+  document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
+  document.querySelector("#update-movie-form .btn-cancel").addEventListener("click", cancelUpdate);
+  
   // adding eventlisteners for search functions
-  document
-    .querySelector("#input-search")
-    .addEventListener("keyup", inputSearchChanged);
-  document
-    .querySelector("#input-search")
-    .addEventListener("search", inputSearchChanged);
-  // adding eventlisteners for search functions
-  document
-    .querySelector("#sort-by")
-    .addEventListener("change", sortByChanged);
+  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
+  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+  
+  // adding eventlisteners for sort functions
+  document.querySelector("#sort-by").addEventListener("change", sortByChanged);
 }
 
 // ========== READ ========== //
@@ -151,6 +136,9 @@ async function updateMovie(id, title, description, image) {
   if (response.ok) {
     console.log("Movie succesfully updatet in firebase");
     updateMovieGrid();
+  } else {
+    console.log("Something went wrong. Please try again");
+    document.querySelector("#error-message-create-new").textContent="Something went wrong. Please try again.";
   }
 }
 
@@ -228,7 +216,6 @@ function searchMovies(searchValue) {
 
   return results;
 }
-
 
 // ========== sort functions ========== //
 function sortByChanged(event) {

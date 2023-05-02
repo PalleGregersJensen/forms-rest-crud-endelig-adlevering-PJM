@@ -40,15 +40,16 @@
       <h2>Create new post</h2>
       <form action="" id="create-post-form">
         <label for="new-image">Image:</label>
-        <input type="text" id="new-image" name="image" placeholder="type in url" />
+        <input type="url" id="new-image" name="image" placeholder="type in url" required/>
 
         <label for="new-titel">Titel:</label>
-        <input type="text" id="new-titel" name="title" placeholder="type titel" />
+        <input type="text" id="new-titel" name="title" placeholder="type titel" required/>
 
         <label for="new-description">Description:</label>
-        <input type="text" id="new-description" name="description" placeholder="type a description" />
+        <input type="text" id="new-description" name="description" placeholder="type a description" required/>
 
         <button>Create Post</button>
+        <p id="error-message-create-new"></p>
       </form>
     </dialog>
 
