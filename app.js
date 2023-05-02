@@ -1,9 +1,21 @@
 "use strict";
 // ========== Globale variables ========== //
 
-const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+// const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+
+const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
 
 let movies;
+
+// ========== Eventlisteners ========== //
+  document
+    .querySelector("#form-delete-movie")
+    .addEventListener("submit", deleteMovieClicked);
+
+  document
+    .querySelector("#form-delete-movie .btn-cancel")
+    .addEventListener("click", cancelDelete);
+
 
 // ========== Load & startup ========== //
 window.addEventListener("load", startApp);
@@ -26,11 +38,40 @@ async function getMovies() {
   return movies;
 }
 
+// ========== Delete Function ========== //
+function deleteMovieClicked(event) {
+  const id = event.target.getAttribute("data-id");
+  deleteMovie(id);
+}
+
+
+function cancelDelete() {
+  console.log("cancel btn clicked");
+  document.querySelector("#dialog-delete-movie").close();
+}
+
+
+async function deleteMovie(id) {
+  const response = await fetch(`${endpoint}/movies/${id}.json`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    console.log("Delete movie works");
+    updateMovieGrid();
+  }
+}
+
+
 // ========== Update Function ========== //
 async function updateMovieGrid() {
   movies = await getMovies();
   showMovies(movies);
 }
+
+
+
+
 
 // ========== HTML opsætning ========== //
 
@@ -54,6 +95,24 @@ function showMovie(movieObject) {
     </article>
   `
   );
+
+  // add event listeners to .btn-delete and .btn-update
+  document
+    .querySelector("#movies article:last-child .btn-delete")
+    .addEventListener("click", deleteClicked);
+  
+  function deleteClicked() {
+    console.log("Delete button clicked");
+    document.querySelector("#dialog-delete-title").textContent =
+      movieObject.title;
+    document
+      .querySelector("#form-delete-movie")
+      .setAttribute("data-id", movieObject.id);
+    document.querySelector("#dialog-delete-movie").showModal();
+  }
+
+  
+  
 }
 
 // ========== Objekt til array ========== //
