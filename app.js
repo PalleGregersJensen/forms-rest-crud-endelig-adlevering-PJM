@@ -12,18 +12,38 @@ function startApp() {
   updateMovieGrid();
 
   //eventlisteners for create
-  document.querySelector("#create-new-post-btn").addEventListener("click", showCreateMovie);
-  document.querySelector("#create-post-form").addEventListener("submit", createMovieClicked);
+  document
+    .querySelector("#create-new-post-btn")
+    .addEventListener("click", showCreateMovie);
+  document
+    .querySelector("#create-post-form")
+    .addEventListener("submit", createMovieClicked);
 
   //eventlisteners for delete
-  document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
-  document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
+  document
+    .querySelector("#form-delete-movie")
+    .addEventListener("submit", deleteMovieClicked);
+  document
+    .querySelector("#form-delete-movie .btn-cancel")
+    .addEventListener("click", cancelDelete);
   // eventlisteners for update
-  document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
-  document.querySelector("#update-movie-form .btn-cancel").addEventListener("click", cancelUpdate);
+  document
+    .querySelector("#update-movie-form")
+    .addEventListener("submit", updateMovieClicked);
+  document
+    .querySelector("#update-movie-form .btn-cancel")
+    .addEventListener("click", cancelUpdate);
   // adding eventlisteners for search functions
-  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
-  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("keyup", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("search", inputSearchChanged);
+  // adding eventlisteners for search functions
+  document
+    .querySelector("#sort-by")
+    .addEventListener("change", sortByChanged);
 }
 
 // ========== READ ========== //
@@ -208,3 +228,34 @@ function searchMovies(searchValue) {
 
   return results;
 }
+
+
+// ========== sort functions ========== //
+function sortByChanged(event) {
+  const value = event.target.value;
+
+  if (value === "none") {
+    updateMovieGrid();
+    console.log(movies);
+  } else if (value === "title") {
+    movies.sort(compareTitle);
+    console.log(movies);
+    showMovies(movies);
+  } else if (value === "description") {
+    movies.sort(compareDescription);
+    console.log(movies);
+    showMovies(movies);
+  }
+
+  function compareTitle(movie1, movie2) {
+    return movie1.title.localeCompare(movie2.title);
+  }
+
+  function compareDescription(movie1, movie2) {
+    return movie1.description.localeCompare(movie2.description);
+  }
+}
+
+
+
+
