@@ -15,6 +15,7 @@ function startApp() {
   document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
   // eventlisteners for update
   document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
+  document.querySelector("#update-movie-form .btn-cancel").addEventListener("click", cancelUpdate);
   // adding eventlisteners for search functions
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
@@ -55,6 +56,11 @@ async function deleteMovie(id) {
 async function updateMovieGrid() {
   movies = await getMovies();
   showMovies(movies);
+}
+
+function cancelUpdate() {
+  console.log("cancel btn clicked");
+  document.querySelector("#update-movie-dialog").close();
 }
 
 function updateMovieClicked(event) {
