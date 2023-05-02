@@ -96,3 +96,66 @@ img {
     opacity: 1;
   }
 }
+
+/* ---------- styling for dialog forms ---------- */
+
+dialog {
+  width: 400px;
+  padding: 20px;
+  background-color: darkorange;
+  border: 4px solid darkblue;
+}
+
+/* Style for the dialog's heading */
+dialog h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 0;
+  color: darkblue;
+}
+
+/* Style for the form inside the dialog */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for the form's label */
+form label {
+  margin-top: 10px;
+  padding-bottom: 4px;
+  font-weight: bold;
+  color: darkblue;
+}
+
+/* Style for the form's input */
+form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid darkblue;
+  margin-bottom: 10px;
+}
+
+form button {
+  border: 3px solid darkorange;
+}
+/* Style for the form's cancel button */
+form .btn-cancel {
+  background-color: darkblue;
+  color: darkorange;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style for the form's submit button */
+form button[type="submit"] {
+  margin-top: auto;
+  background-color: darkblue;
+  color: darkorange;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
