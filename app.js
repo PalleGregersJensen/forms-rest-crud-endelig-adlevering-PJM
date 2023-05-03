@@ -37,7 +37,6 @@ async function getMovies() {
   const data = await response.json();
 
   const movies = prepareMovieData(data);
-  console.log(movies);
   return movies;
 }
 
@@ -122,22 +121,16 @@ function updateMovieClicked(event) {
   const description = form.description.value;
   const image = form.image.value;
   const director = form.director.value;
-  const movieLength = form.movielength.value;
-  const yearPublished = form.yearPublished.value;
-  const color = form.color.value;
-
-  if (form.color.value === yes) {
-    color = true;
-  } else {
-    color = false;
-  }
+  const movieLength = Number(form.lengthminutes.value);
+  const yearpublished = Number(form.yearpublished.value);
+  const color = Boolean(form.color.value);
 
   const id = form.getAttribute("data-id");
-  updateMovie(id, title, description, image, director, movieLength, yearPublished, color);
+  updateMovie(id, title, description, image, director, movieLength, yearpublished, color);
 }
 
-async function updateMovie(id, title, description, image, director, movielength, yearPublished, color) {
-  const movieToUpdate = { title, description, image, director, movielength, yearPublished, color }; // movie update to update
+async function updateMovie(id, title, description, image, director, lengthminutes, yearpublished, color) {
+  const movieToUpdate = { title, description, image, director, lengthminutes, yearpublished, color }; // movie update to update
   const json = JSON.stringify(movieToUpdate); // convert the JS objekt to JSON string
   const response = await fetch(`${endpoint}/movies/${id}.json`, {
     method: "PUT",
@@ -163,7 +156,6 @@ function showMovies(movieList) {
 }
 
 function showMovie(movieObject) {
-  console.log(movieObject);
   document.querySelector("#movies").insertAdjacentHTML(
     "beforeend",
     /*html*/ `
@@ -190,7 +182,6 @@ function showMovie(movieObject) {
 
   function updateClicked() {
     const updateForm = document.querySelector("#update-movie-form");
-    console.log(movieObject);
     updateForm.title.value = movieObject.title;
     updateForm.description.value = movieObject.description;
     updateForm.image.value = movieObject.image;
