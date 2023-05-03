@@ -161,7 +161,20 @@ form button[type="submit"] {
 }
 
 
-/* hide */
-.hide {
-    display: none;
+/* Styling af error-messages */
+#error-message-create {
+  font-size: 2em;
+  background-color: red;
 }
+
+#error-message-update {
+  font-size: 2em;
+  background-color: red;
+}
+
+
+
+/* hide */
+/* .hide { */
+    /* display: none; */
+/* } */
