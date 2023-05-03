@@ -54,18 +54,27 @@ function createMovieClicked(event) {
   const image = form.image.value;
   const title = form.title.value;
   const description = form.description.value;
+  const director = form.director.value;
+  const length = form.lengthminutes.value;
+  const year = form.yearpublished.value;
+  const color = form.color.value;
 
-  createMovie(image, title, description);
+  createMovie(image, title, description, director, length, year, color);
 
   form.reset();
   document.querySelector("#create-post-dialog").close();
 }
 
-async function createMovie(image, title, description) {
+async function createMovie(image, title, description, director, lengthminutes, yearpublished, color) {
   const newMovie = {
     image: image,
     title: title,
     description: description,
+    description: description,
+    director: director,
+    lengthminutes: Number(lengthminutes),
+    yearpublished: Number(yearpublished),
+    color: Boolean(color),
   };
 
   const json = JSON.stringify(newMovie);

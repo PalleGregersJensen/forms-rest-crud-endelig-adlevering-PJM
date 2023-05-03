@@ -38,7 +38,7 @@
     <!-- dialog - create new post -->
     <dialog id="create-post-dialog">
       <h2>Create new post</h2>
-      <form action="" id="create-post-form">
+      <form action="" id="create-post-form" method="dialog">
         <label for="new-image">Image:</label>
         <input type="url" id="new-image" name="image" placeholder="type in url" required />
 
@@ -47,6 +47,21 @@
 
         <label for="new-description">Description:</label>
         <input type="text" id="new-description" name="description" placeholder="type a description" required />
+        
+        <label for="new-director">Director:</label>
+        <input type="text" id="new-director" name="director" placeholder="type a director" required />
+        
+        <label for="new-lengthminutes">Length:</label>
+        <input type="number" id="new-lengthminutes" name="lengthminutes" placeholder="type length of movie in minutes" required />
+        
+        <label for="new-yearpublished">Year:</label>
+        <input type="number" id="new-yearpublished" name="yearpublished" placeholder="type the year movie was published" required />
+        
+        <label for="new-color">Color:</label>
+        <select name="color" id="new-color">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
 
         <button type="submit">Create Post</button>
         <p id="error-message-create-new"></p>
