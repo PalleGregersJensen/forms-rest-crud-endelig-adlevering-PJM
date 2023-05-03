@@ -70,7 +70,6 @@ async function createMovie(image, title, description, director, lengthminutes, y
     image: image,
     title: title,
     description: description,
-    description: description,
     director: director,
     lengthminutes: Number(lengthminutes),
     yearpublished: Number(yearpublished),
