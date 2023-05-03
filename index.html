@@ -47,18 +47,18 @@
 
         <label for="new-description">Description:</label>
         <input type="text" id="new-description" name="description" placeholder="type a description" required />
-        
+
         <label for="new-director">Director:</label>
         <input type="text" id="new-director" name="director" placeholder="type a director" required />
-        
+
         <label for="new-lengthminutes">Length:</label>
         <input type="number" id="new-lengthminutes" name="lengthminutes" placeholder="type length of movie in minutes" required />
-        
+
         <label for="new-yearpublished">Year:</label>
         <input type="number" id="new-yearpublished" name="yearpublished" placeholder="type the year movie was published" required />
-        
+
         <label for="new-color">Color:</label>
-        <select name="color" id="new-color">
+        <select name="color" id="new-color" required>
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
@@ -76,43 +76,19 @@
         <input type="text" name="title" id="update-title" placeholder="type a new title..." required />
 
         <label for="description">Description:</label>
-        <input
-          type="text"
-          name="description"
-          id="update-description"
-          placeholder="type a new description text..."
-          required
-        />
+        <input type="text" name="description" id="update-description" placeholder="type a new description text..." required />
 
         <label for="update-image">Image:</label>
         <input type="url" name="image" id="update-image" placeholder="type a new url address..." required />
 
         <label for="director">Director:</label>
-        <input
-          type="text"
-          name="director"
-          id="update-director"
-          placeholder="type in the name of the director"
-          required
-        />
+        <input type="text" name="director" id="update-director" placeholder="type in the name of the director" required />
 
         <label for="lengthminutes">Movie lenth:</label>
-        <input
-          type="number"
-          name="lengthminutes"
-          id="update-lengthminutes"
-          placeholder="Type in the movie length in minutes"
-          required
-        />
+        <input type="number" name="lengthminutes" id="update-lengthminutes" placeholder="Type in the movie length in minutes" required />
 
         <label for="yearpublished">Year published:</label>
-        <input
-          type="number"
-          name="yearpublished"
-          id="update-yearpublished"
-          placeholder="Type the year it was published"
-          required
-        />
+        <input type="number" name="yearpublished" id="update-yearpublished" placeholder="Type the year it was published" required />
 
         <label for="color"
           >Is the movie in color:
