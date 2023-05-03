@@ -71,6 +71,41 @@
 
         <label for="update-image">Image:</label>
         <input type="url" name="image" id="update-image" placeholder="type a new url address..." required />
+
+        <label for="director">Director:</label>
+        <input
+          type="text"
+          name="director"
+          id="update-director"
+          placeholder="type in the name of the director"
+          required
+        />
+
+        <label for="lengthminutes">Movie lenth:</label>
+        <input
+          type="number"
+          name="lengthminutes"
+          id="update-lengthminutes"
+          placeholder="Type in the movie length in minutes"
+          required
+        />
+
+        <label for="yearpublished">Year published:</label>
+        <input
+          type="number"
+          name="yearpublished"
+          id="update-yearpublished"
+          placeholder="Type the year it was published"
+          required
+        />
+
+        <label for="color"
+          >Is the movie in color:
+          <select name="color" id="update-color">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </label>
         <button type="button" class="btn-cancel">Cancel</button>
         <button type="submit">Update</button>
       </form>

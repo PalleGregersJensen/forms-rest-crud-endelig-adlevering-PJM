@@ -18,15 +18,15 @@ function startApp() {
   //eventlisteners for delete
   document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
   document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
-  
+
   // eventlisteners for update
   document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
   document.querySelector("#update-movie-form .btn-cancel").addEventListener("click", cancelUpdate);
-  
+
   // adding eventlisteners for search functions
   document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
   document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
-  
+
   // adding eventlisteners for sort functions
   document.querySelector("#sort-by").addEventListener("change", sortByChanged);
 }
@@ -37,6 +37,7 @@ async function getMovies() {
   const data = await response.json();
 
   const movies = prepareMovieData(data);
+  console.log(movies);
   return movies;
 }
 
@@ -48,7 +49,7 @@ function showCreateMovie(event) {
 }
 
 function createMovieClicked(event) {
-  console.log("createMoviesClicked called..")
+  console.log("createMoviesClicked called..");
   const form = event.target;
 
   const image = form.image.value;
@@ -65,18 +66,18 @@ async function createMovie(image, title, description) {
   const newMovie = {
     image: image,
     title: title,
-    description: description
+    description: description,
   };
 
   const json = JSON.stringify(newMovie);
 
   const response = await fetch(`${endpoint}/movies.json`, {
     method: "POST",
-    body: json
+    body: json,
   });
 
   if (response.ok) {
-    console.log("Congratulations, new movie was created succesfully!")
+    console.log("Congratulations, new movie was created succesfully!");
     updateMovieGrid();
   }
 }
@@ -120,13 +121,23 @@ function updateMovieClicked(event) {
   const title = form.title.value;
   const description = form.description.value;
   const image = form.image.value;
+  const director = form.director.value;
+  const movieLength = form.movielength.value;
+  const yearPublished = form.yearPublished.value;
+  const color = form.color.value;
+
+  if (form.color.value === yes) {
+    color = true;
+  } else {
+    color = false;
+  }
 
   const id = form.getAttribute("data-id");
-  updateMovie(id, title, description, image);
+  updateMovie(id, title, description, image, director, movieLength, yearPublished, color);
 }
 
-async function updateMovie(id, title, description, image) {
-  const movieToUpdate = { title, description, image }; // movie update to update
+async function updateMovie(id, title, description, image, director, movielength, yearPublished, color) {
+  const movieToUpdate = { title, description, image, director, movielength, yearPublished, color }; // movie update to update
   const json = JSON.stringify(movieToUpdate); // convert the JS objekt to JSON string
   const response = await fetch(`${endpoint}/movies/${id}.json`, {
     method: "PUT",
@@ -138,7 +149,7 @@ async function updateMovie(id, title, description, image) {
     updateMovieGrid();
   } else {
     console.log("Something went wrong. Please try again");
-    document.querySelector("#error-message-create-new").textContent="Something went wrong. Please try again.";
+    document.querySelector("#error-message-create-new").textContent = "Something went wrong. Please try again.";
   }
 }
 
@@ -152,6 +163,7 @@ function showMovies(movieList) {
 }
 
 function showMovie(movieObject) {
+  console.log(movieObject);
   document.querySelector("#movies").insertAdjacentHTML(
     "beforeend",
     /*html*/ `
@@ -178,9 +190,14 @@ function showMovie(movieObject) {
 
   function updateClicked() {
     const updateForm = document.querySelector("#update-movie-form");
+    console.log(movieObject);
     updateForm.title.value = movieObject.title;
     updateForm.description.value = movieObject.description;
     updateForm.image.value = movieObject.image;
+    updateForm.director.value = movieObject.director;
+    updateForm.lengthminutes.value = movieObject.lengthminutes;
+    updateForm.yearpublished.value = movieObject.yearpublished;
+    updateForm.color.value = movieObject.color;
     updateForm.setAttribute("data-id", movieObject.id);
     document.querySelector("#update-movie-dialog").showModal();
   }
@@ -242,7 +259,3 @@ function sortByChanged(event) {
     return movie1.description.localeCompare(movie2.description);
   }
 }
-
-
-
-
