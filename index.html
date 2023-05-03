@@ -38,7 +38,7 @@
     <!-- dialog - create new post -->
     <dialog id="create-post-dialog">
       <h2>Create new post</h2>
-      <form action="" id="create-post-form" method="dialog">
+      <form action="" id="create-post-form" method="dialog" autocomplete="on">
         <label for="new-image">Image:</label>
         <input type="url" id="new-image" name="image" placeholder="type in url" required />
 
@@ -49,7 +49,7 @@
         <input type="text" id="new-description" name="description" placeholder="type a description" required />
 
         <label for="new-director">Director:</label>
-        <input type="text" id="new-director" name="director" placeholder="type a director" required />
+        <input type="text" id="new-director" name="director" placeholder="type a director" list="directors" required />
 
         <label for="new-lengthminutes">Length:</label>
         <input
