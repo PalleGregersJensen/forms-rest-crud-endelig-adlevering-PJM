@@ -155,18 +155,6 @@ async function updateMovie(id, title, description, image, director, lengthminute
   }
 }
 
-// async function updateDatalist() {
-//   const datalist = document.querySelector("#datalist-directors");
-//   movies = getMovies().director;
-
-//   // tilføj hver mulighed til datalisten
-//   movies.forEach((mulighed) => {
-//     const option = document.createElement(`option`);
-//     option.value = mulighed;
-//     datalist.appendChild(option);
-//   });
-// }
-
 // ========== HTML opsætning ========== //
 
 function showMovies(movieList) {
@@ -210,7 +198,6 @@ function showMovie(movieObject) {
     updateForm.lengthminutes.value = movieObject.lengthminutes;
     updateForm.yearpublished.value = movieObject.yearpublished;
     updateForm.color.value = movieObject.color;
-    // updateDatalist();
     updateForm.setAttribute("data-id", movieObject.id);
     document.querySelector("#update-movie-dialog").showModal();
   }
