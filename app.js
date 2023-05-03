@@ -217,11 +217,15 @@ function prepareMovieData(dataObjekt) {
 
 function updateDatalist(movieObject) {
   const datalist = document.querySelector("#directors");
-  for (const key in movieObject) {
-    const movieDirector = movieObject[key].director;
-    const option = document.createElement("option");
-    option.value = movieDirector;
-    datalist.appendChild(option);
+  const uniqueDirectors = new Set();
+  for (const i in movieObject) {
+    const movieDirector = movieObject[i].director;
+    if (!uniqueDirectors.has(movieDirector)) {
+      uniqueDirectors.add(movieDirector);
+      const option = document.createElement("option");
+      option.value = movieDirector;
+      datalist.appendChild(option);
+    }
   }
 }
 
