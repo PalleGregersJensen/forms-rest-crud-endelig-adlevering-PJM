@@ -1,7 +1,9 @@
 "use strict";
 // ========== Globale variables ========== //
 
-const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
+
+// const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
 let movies;
 
 // ========== Load & startup ========== //
@@ -61,8 +63,6 @@ function createMovieClicked(event) {
 
   createMovie(image, title, description, director, length, year, color);
 
-  form.reset();
-  document.querySelector("#create-post-dialog").close();
 }
 
 async function createMovie(image, title, description, director, lengthminutes, yearpublished, color) {
@@ -87,6 +87,13 @@ async function createMovie(image, title, description, director, lengthminutes, y
     console.log("Congratulations, new movie was created succesfully!");
     updateMovieGrid();
   }
+   else {
+     console.log("Something went wrong. Please try again");
+     document.querySelector("#error-message-create").textContent =
+      "Something went wrong. Please try again.";
+    // alert("Something went wrong");
+    document.querySelector("#create-post-dialog").showModal();
+   }
 }
 
 // ========== Delete Function ========== //
@@ -148,9 +155,14 @@ async function updateMovie(id, title, description, image, director, lengthminute
   if (response.ok) {
     console.log("Movie succesfully updatet in firebase");
     updateMovieGrid();
+    // hideErrorMessage();
   } else {
     console.log("Something went wrong. Please try again");
-    document.querySelector("#error-message-create-new").textContent = "Something went wrong. Please try again.";
+    document.querySelector("#error-message-update").textContent =
+      "Something went wrong. Please try again.";;
+    // showErrorMessage("Something went wrong. Please, try again");
+    // alert("Something went wrong");
+    document.querySelector("#update-movie-dialog").showModal();
   }
 }
 
@@ -257,4 +269,16 @@ function sortByChanged(event) {
   function compareDescription(movie1, movie2) {
     return movie1.description.localeCompare(movie2.description);
   }
+}
+
+
+// ========== handle error functions ========== //
+function showErrorMessage(message) {
+  document.querySelector(".error-message").textContent = message;
+  document.querySelector(".error-message").classList.remove("hide");
+}
+
+function hideErrorMessage() {
+  document.querySelector(".error-message").textContent = "";
+  document.querySelector(".error-message").classList.add("hide");
 }

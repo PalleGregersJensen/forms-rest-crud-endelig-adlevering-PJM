@@ -159,3 +159,9 @@ form button[type="submit"] {
   font-size: 16px;
   cursor: pointer;
 }
+
+
+/* hide */
+.hide {
+    display: none;
+}
