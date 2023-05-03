@@ -47,16 +47,28 @@
 
         <label for="new-description">Description:</label>
         <input type="text" id="new-description" name="description" placeholder="type a description" required />
-        
+
         <label for="new-director">Director:</label>
         <input type="text" id="new-director" name="director" placeholder="type a director" required />
-        
+
         <label for="new-lengthminutes">Length:</label>
-        <input type="number" id="new-lengthminutes" name="lengthminutes" placeholder="type length of movie in minutes" required />
-        
+        <input
+          type="number"
+          id="new-lengthminutes"
+          name="lengthminutes"
+          placeholder="type length of movie in minutes"
+          required
+        />
+
         <label for="new-yearpublished">Year:</label>
-        <input type="number" id="new-yearpublished" name="yearpublished" placeholder="type the year movie was published" required />
-        
+        <input
+          type="number"
+          id="new-yearpublished"
+          name="yearpublished"
+          placeholder="type the year movie was published"
+          required
+        />
+
         <label for="new-color">Color:</label>
         <select name="color" id="new-color">
           <option value="true">Yes</option>
@@ -71,7 +83,7 @@
     <!-- dialog - update movie -->
     <dialog id="update-movie-dialog">
       <h2>Update Movie</h2>
-      <form id="update-movie-form" method="dialog">
+      <form id="update-movie-form" method="dialog" autocomplete="on">
         <label for="update-title">Title:</label>
         <input type="text" name="title" id="update-title" placeholder="type a new title..." required />
 
@@ -89,12 +101,28 @@
 
         <label for="director">Director:</label>
         <input
+          list="directors"
           type="text"
           name="director"
           id="update-director"
           placeholder="type in the name of the director"
           required
         />
+        <datalist id="directors">
+          <option value="Andrei Tarkovsky"></option>
+          <option value="Alfred Hitchcock"></option>
+          <option value="Michael Mann"></option>
+          <option value="Florian Henckel von Donnersmarck"></option>
+          <option value="Chris Smith"></option>
+          <option value="Bela Tarr"></option>
+          <option value="John Carpenter"></option>
+          <option value="Frank Darabont"></option>
+          <option value="Martin Campbell"></option>
+          <option value="Quentin Tarantino"></option>
+          <option value="Werner Herzog"></option>
+          <option value="Francis Ford Coppola"></option>
+          <option value="Joel & Ethan Coen"></option>
+        </datalist>
 
         <label for="lengthminutes">Movie lenth:</label>
         <input
@@ -116,13 +144,15 @@
 
         <label for="color"
           >Is the movie in color:
-          <select name="color" id="update-color">
+          <select name="color" id="update-color" required>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
         </label>
-        <button type="button" class="btn-cancel">Cancel</button>
-        <button type="submit">Update</button>
+        <div id="buttons-container">
+          <button type="button" class="btn-cancel">Cancel</button>
+          <button type="submit">Update</button>
+        </div>
       </form>
     </dialog>
 
