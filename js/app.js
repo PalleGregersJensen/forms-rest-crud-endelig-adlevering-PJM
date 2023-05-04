@@ -1,9 +1,8 @@
 import { getMovies, createMovie, deleteMovie, updateMovie } from "./rest-data.js";
 import { updateDatalist } from "./helpers.js";
+
 // ========== Globale variables ========== //
 
-// const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
-// const endpoint = "https://test-form-database-f322e-default-rtdb.firebaseio.com/";
 let movies;
 
 // ========== Load & startup ========== //
