@@ -32,6 +32,14 @@ function startApp() {
 
   // adding eventlisteners for sort functions
   document.querySelector("#sort-by").addEventListener("change", sortByChanged);
+
+  // adding eventlisteners for filter functions
+  document.querySelector("#monochrome").addEventListener("change", filterByCategory);
+  document.querySelector("#eighties").addEventListener("change", filterByCategory);
+  document.querySelector("#nineties").addEventListener("change", filterByCategory);
+  document.querySelector("#zeroes").addEventListener("change", filterByCategory);
+  document.querySelector("#tens").addEventListener("change", filterByCategory);
+  document.querySelector("#twenties").addEventListener("change", filterByCategory);
 }
 
 // ========== Create Function ========== //
@@ -284,7 +292,14 @@ function filterByCategory() {
   const tens = document.querySelector("#tens");
   const twenties = document.querySelector("#twenties");
 
-  if (eighties.checked || nineties.checked || zeroes.checked || tens.checked || twenties.checked || monochrome.checked) {
+  if (
+    eighties.checked ||
+    nineties.checked ||
+    zeroes.checked ||
+    tens.checked ||
+    twenties.checked ||
+    monochrome.checked
+  ) {
     moviesFiltered = movies.filter(checkCatergory);
     isFilterOn = true;
     showMovies(moviesFiltered);
