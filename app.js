@@ -1,9 +1,9 @@
 "use strict";
 // ========== Globale variables ========== //
 
-const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
+// const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
 
-// const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
 let movies;
 
 // ========== Load & startup ========== //
