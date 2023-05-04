@@ -32,6 +32,13 @@ function startApp() {
 
   // adding eventlisteners for sort functions
   document.querySelector("#sort-by").addEventListener("change", sortByChanged);
+
+  document.querySelector("#monochrome").addEventListener("click", filterByCategory)
+  document.querySelector("#eighties").addEventListener("click", filterByCategory)
+  document.querySelector("#nineties").addEventListener("click", filterByCategory)
+  document.querySelector("#zeroes").addEventListener("click", filterByCategory)
+  document.querySelector("#tens").addEventListener("click", filterByCategory)
+  document.querySelector("#twenties").addEventListener("click", filterByCategory)
 }
 
 // ========== Create Function ========== //
