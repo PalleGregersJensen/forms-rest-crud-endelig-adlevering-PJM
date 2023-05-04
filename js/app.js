@@ -1,9 +1,8 @@
-"use strict";
+import { getMovies, createMovie, deleteMovie, updateMovie } from "./rest-data.js";
+import { updateDatalist } from "./helpers.js";
 // ========== Globale variables ========== //
 
 // const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
-
-const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
 // const endpoint = "https://test-form-database-f322e-default-rtdb.firebaseio.com/";
 let movies;
 
@@ -34,15 +33,6 @@ function startApp() {
   document.querySelector("#sort-by").addEventListener("change", sortByChanged);
 }
 
-// ========== READ ========== //
-async function getMovies() {
-  const response = await fetch(`${endpoint}/movies.json`);
-  const data = await response.json();
-
-  const movies = prepareMovieData(data);
-  return movies;
-}
-
 // ========== Create Function ========== //
 
 function showCreateMovie(event) {
@@ -50,7 +40,7 @@ function showCreateMovie(event) {
   document.querySelector("#create-post-dialog").showModal();
 }
 
-function createMovieClicked(event) {
+async function createMovieClicked(event) {
   console.log("createMoviesClicked called..");
   const form = event.target;
 
@@ -62,27 +52,7 @@ function createMovieClicked(event) {
   const year = form.yearpublished.value;
   const color = form.color.value;
 
-  createMovie(image, title, description, director, length, year, color);
-}
-
-async function createMovie(image, title, description, director, lengthminutes, yearpublished, color) {
-  const newMovie = {
-    image: image,
-    title: title,
-    description: description,
-    director: director,
-    lengthminutes: Number(lengthminutes),
-    yearpublished: Number(yearpublished),
-    color: Boolean(color),
-  };
-
-  const json = JSON.stringify(newMovie);
-
-  const response = await fetch(`${endpoint}/movies.json`, {
-    method: "POST",
-    body: json,
-  });
-
+  const response = await createMovie(image, title, description, director, length, year, color);
   if (response.ok) {
     console.log("Congratulations, new movie was created succesfully!");
     updateMovieGrid();
@@ -91,28 +61,23 @@ async function createMovie(image, title, description, director, lengthminutes, y
     document.querySelector("#error-message-create").textContent = "Something went wrong. Please try again.";
     document.querySelector("#create-post-dialog").showModal();
   }
+
+  form.reset(); // clears inputs
 }
 
 // ========== Delete Function ========== //
-function deleteMovieClicked(event) {
+async function deleteMovieClicked(event) {
   const id = event.target.getAttribute("data-id");
-  deleteMovie(id);
+  const response = await deleteMovie(id);
+  if (response.ok) {
+    console.log("Delete movie works");
+    updateMovieGrid();
+  }
 }
 
 function cancelDelete() {
   console.log("cancel btn clicked");
   document.querySelector("#dialog-delete-movie").close();
-}
-
-async function deleteMovie(id) {
-  const response = await fetch(`${endpoint}/movies/${id}.json`, {
-    method: "DELETE",
-  });
-
-  if (response.ok) {
-    console.log("Delete movie works");
-    updateMovieGrid();
-  }
 }
 
 // ========== Update Function ========== //
@@ -127,7 +92,7 @@ function cancelUpdate() {
   document.querySelector("#update-movie-dialog").close();
 }
 
-function updateMovieClicked(event) {
+async function updateMovieClicked(event) {
   const form = event.target;
 
   const title = form.title.value;
@@ -139,25 +104,7 @@ function updateMovieClicked(event) {
   const color = Boolean(form.color.value);
 
   const id = form.getAttribute("data-id");
-  updateMovie(id, title, description, image, director, movieLength, yearpublished, color);
-}
-
-async function updateMovie(id, title, description, image, director, lengthminutes, yearpublished, color) {
-  const movieToUpdate = {
-    title,
-    description,
-    image,
-    director,
-    lengthminutes,
-    yearpublished,
-    color,
-  }; // movie update to update
-  const json = JSON.stringify(movieToUpdate); // convert the JS objekt to JSON string
-  const response = await fetch(`${endpoint}/movies/${id}.json`, {
-    method: "PUT",
-    body: json,
-  });
-
+  const response = await updateMovie(id, title, description, image, director, movieLength, yearpublished, color);
   if (response.ok) {
     console.log("Movie succesfully updatet in firebase");
     updateMovieGrid();
@@ -243,31 +190,6 @@ function showMovieClicked(movieObject) {
   }
 
   document.querySelector("#dialog-detail").showModal();
-}
-
-// ========== Objekt til array ========== //
-function prepareMovieData(dataObjekt) {
-  const movieArray = [];
-  for (const key in dataObjekt) {
-    const movie = dataObjekt[key];
-    movie.id = key;
-    movieArray.push(movie);
-  }
-  return movieArray;
-}
-
-function updateDatalist(movieObject) {
-  const datalist = document.querySelector("#directors");
-  const uniqueDirectors = new Set();
-  for (const i in movieObject) {
-    const movieDirector = movieObject[i].director;
-    if (!uniqueDirectors.has(movieDirector)) {
-      uniqueDirectors.add(movieDirector);
-      const option = document.createElement("option");
-      option.value = movieDirector;
-      datalist.appendChild(option);
-    }
-  }
 }
 
 // ========== search functions ========== //
