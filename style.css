@@ -4,6 +4,12 @@ header {
   text-align: center;
   padding: 20px;
 }
+
+header h1 {
+  font-family: "Squada One", cursive;
+  font-size: 60px;
+}
+
 main {
   background-color: darkblue;
 }
@@ -181,7 +187,6 @@ form button[type="submit"] {
   cursor: pointer;
 }
 
-
 /* Styling af error-messages */
 #error-message-create {
   font-size: 2em;
@@ -193,9 +198,7 @@ form button[type="submit"] {
   background-color: red;
 }
 
-
-
 /* hide */
 /* .hide { */
-    /* display: none; */
+/* display: none; */
 /* } */
