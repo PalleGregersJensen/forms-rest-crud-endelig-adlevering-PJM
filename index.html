@@ -22,59 +22,31 @@
     <main>
       <!-- search sort & create actions -->
 
-      <!-- brug evt fieldset -->
-      <section class="actions-container">
-        <!-- search -->
-        <input type="search" id="input-search" placeholder="search by title..." />
-
-        <!-- create -->
-        <button id="create-new-post-btn">Create New Post</button>
-
-        <!-- sort -->
-        <div>
-          <label for="sort-by">sort by:</label>
-          <select name="sort-by" id="sort-by">
-            <option value="none">None</option>
-            <option value="title">Title</option>
-            <option value="description">Description</option>
-            <option value="year">Year</option>
-          </select>
-        </div>
+      <!-- action område -->
+      <section>
+        <section>
+          <input type="search" id="input-search" placeholder="search by title..." />
+          <button id="create-new-post-btn">Create new post</button>
+          <div>
+            <label for="sort-by">Sort by:</label>
+            <select name="sort-by" id="sort-by">
+              <option value="none">None</option>
+              <option value="title">title</option>
+              <option value="description">description</option>
+              <option value="year">year</option>
+            </select>
+          </div>
+          <fieldset>
+            <legend>Chose Filters</legend>
+            <label for="monochrome">Monochrome<input type="checkbox" name="monochrome" id="monochrome" /></label
+            ><label for="eighties">1980's<input type="checkbox" name="eighties" id="eighties" /></label
+            ><label for="nineties">1990's<input type="checkbox" name="nineties" id="nineties" /></label
+            ><label for="zeroes">2000's<input type="checkbox" name="zeroes" id="zeroes" /></label
+            ><label for="tens">2010's<input type="checkbox" name="tens" id="tens" /></label
+            ><label for="twenties">2020's<input type="checkbox" name="twenties" id="twenties" /></label>
+          </fieldset>
+        </section>
       </section>
-
-      <fieldset class="filters-section">
-        <legend>Choose filters</legend>
-
-        <label for="monochrome"
-          >Monochrome
-          <input type="checkbox" name="monochrome" id="monochrome" />
-        </label>
-
-        <label for="eighties"
-          >1980's
-          <input type="checkbox" name="eighties" id="eighties" />
-        </label>
-
-        <label for="nineties"
-          >1990's
-          <input type="checkbox" name="nineties" id="nineties" />
-        </label>
-
-        <label for="zeroes"
-          >2000's
-          <input type="checkbox" name="zeroes" id="zeroes" />
-        </label>
-
-        <label for="tens"
-          >2010's
-          <input type="checkbox" name="tens" id="tens" />
-        </label>
-
-        <label for="twenties"
-          >2020's
-          <input type="checkbox" name="twenties" id="twenties" />
-        </label>
-      </fieldset>
 
       <!-- article for posts -->
       <div id="movies" class="grid-container"></div>
