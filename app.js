@@ -195,8 +195,14 @@ function showMovie(movieObject) {
   document.querySelector("#movies article:last-child").addEventListener("click", movieClicked);
 
   // add event listeners to .btn-delete and .btn-update
-  document.querySelector("#movies article:last-child .btn-delete").addEventListener("click", deleteClicked);
-  document.querySelector("#movies article:last-child .btn-update").addEventListener("click", updateClicked);
+  document.querySelector("#movies article:last-child .btn-delete").addEventListener("click", (event) => {
+    event.stopPropagation(); // forhindrer, at klikhændelsen "bubbles"
+    deleteClicked();
+  });
+  document.querySelector("#movies article:last-child .btn-update").addEventListener("click", (event) => {
+    event.stopPropagation(); // forhindrer, at klikhændelsen "bubbles"
+    updateClicked();
+  });
 
   function deleteClicked() {
     console.log("Delete button clicked");
