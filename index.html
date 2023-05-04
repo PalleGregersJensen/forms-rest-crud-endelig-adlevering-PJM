@@ -68,7 +68,6 @@
       </fieldset>
 
       <!-- article for posts -->
-
       <div id="movies" class="grid-container"></div>
     </main>
 
@@ -190,6 +189,28 @@
           <button type="submit">Delete</button>
         </div>
       </form>
+    </dialog>
+
+    <!-- dialog - detail view -->
+    <dialog id="dialog-detail" open>
+      <section class="dialog-detail-grid">
+        <figure><img id="dialog-detail-image" /> billed</figure>
+        <article>
+          <h2 id="dialog-detail-title">Pulp Fiction</h2>
+          <p id="dialog-detail-description">The lives of two mob...</p>
+          <section id="dialog-detail-ekstra">
+            <ul>
+              <li id="dialog-detail-director"></li>
+              <li id="dialog-detail-lengthminutes"></li>
+              <li id="dialog-detail-yearpublished"></li>
+              <li id="dialog-detail-color"></li>
+            </ul>
+          </section>
+        </article>
+        <form method="dialog">
+          <button type="submit">Close</button>
+        </form>
+      </section>
     </dialog>
 
     <script src="app.js"></script>
