@@ -4,6 +4,8 @@
 const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
 // const endpoint = "https://test-form-database-f322e-default-rtdb.firebaseio.com/";
 let movies;
+let moviesFiltered;
+let isFilterOn = false;
 
 // ========== Load & startup ========== //
 window.addEventListener("load", startApp);
@@ -256,17 +258,24 @@ function sortByChanged(event) {
   if (value === "none") {
     updateMovieGrid();
     //console.log(movies);
-  } else if (value === "title") {
+  } else if (value === "title" && !isFilterOn) {
     movies.sort(compareTitle);
-    //console.log(movies);
     showMovies(movies);
-  } else if (value === "description") {
+  } else if (value === "title" && isFilterOn) {
+    moviesFiltered.sort(compareTitle);
+    showMovies(moviesFiltered);
+  } else if (value === "description" && !isFilterOn) {
     movies.sort(compareDescription);
-    //console.log(movies);
     showMovies(movies);
-  } else if (value === "year") {
+  } else if (value === "description" && isFilterOn) {
+    moviesFiltered.sort(compareDescription);
+    showMovies(moviesFiltered);
+  } else if (value === "year" && !isFilterOn) {
     movies.sort(compareYear);
     showMovies(movies);
+  } else if (value === "year" && isFilterOn) {
+    moviesFiltered.sort(compareYear);
+    showMovies(moviesFiltered);
   }
 
   function compareTitle(movie1, movie2) {
@@ -285,40 +294,44 @@ function sortByChanged(event) {
 // ========== filter functions ==========
 
 //Monochrome
-function filterByColor() {
+// function filterByColor() {
+//   const monochrome = document.querySelector("#monochrome");
+
+//   if (monochrome.checked) {
+//     moviesFiltered = movies.filter(isColor);
+//     isFilterOn = true;
+//     showMovies(moviesFiltered);
+//   } else if (!monochrome.checked) {
+//     isFilterOn = false;
+//     showMovies(movies);
+//   }
+// }
+
+// function isColor(movie) {
+//   if (!movie.color) {
+//     return movie;
+//   }
+// }
+
+//filter by Decades and monochrome
+function filterByCategory() {
   const monochrome = document.querySelector("#monochrome");
-
-  if (monochrome.checked) {
-    const blackAndWhiteMovies = movies.filter(isColor);
-    showMovies(blackAndWhiteMovies);
-  } else if (!monochrome.checked) {
-    showMovies(movies);
-  }
-}
-
-function isColor(movie) {
-  const monochrome = document.querySelector("#monochrome").value;
-  if (!movie.color) {
-    return movie;
-  }
-}
-
-//Decades
-function filterByDecades() {
   const eighties = document.querySelector("#eighties");
   const nineties = document.querySelector("#nineties");
   const zeroes = document.querySelector("#zeroes");
   const tens = document.querySelector("#tens");
   const twenties = document.querySelector("#twenties");
 
-  if (eighties.checked || nineties.checked || zeroes.checked || tens.checked || twenties.checked) {
-    const result = movies.filter(checkDecade);
-    showMovies(result);
+  if (eighties.checked || nineties.checked || zeroes.checked || tens.checked || twenties.checked || monochrome.checked) {
+    moviesFiltered = movies.filter(checkCatergory);
+    isFilterOn = true;
+    showMovies(moviesFiltered);
   } else {
+    isFilterOn = false;
     showMovies(movies);
   }
 
-  function checkDecade(movie) {
+  function checkCatergory(movie) {
     if (eighties.checked && movie.yearpublished >= 1980 && movie.yearpublished < 1990) {
       return movie;
     } else if (nineties.checked && movie.yearpublished >= 1990 && movie.yearpublished < 2000) {
@@ -328,6 +341,8 @@ function filterByDecades() {
     } else if (tens.checked && movie.yearpublished >= 2010 && movie.yearpublished < 2020) {
       return movie;
     } else if (twenties.checked && movie.yearpublished >= 2020 && movie.yearpublished < 2030) {
+      return movie;
+    } else if (monochrome.checked && !movie.color) {
       return movie;
     }
   }

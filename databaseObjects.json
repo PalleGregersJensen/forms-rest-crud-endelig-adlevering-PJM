@@ -139,7 +139,16 @@
       "lengthminutes": 70,
       "yearpublished": 1931,
       "color": false,
-      "description": "In a village of the Bavarian Alps, Henry Frankenstein and his assistant Fritz, a hunchback, piece together a human body. Some of the parts are from freshly buried bodies, and some from the bodies of recently hanged criminals. In a laboratory he's built inside a watchtower, Henry desires to create a human, giving this body life through electrical devices. He still needs a brain for his creation. At a nearby school, Henry's former teacher Dr. Waldman shows his class the brain of an average human being and the corrupted brain of a criminal for comparison. Henry sends Fritz to steal the healthy brain from Waldman's class. Fritz accidentally damages it, and so brings Henry the corrupt brain."
+      "description": "In a village of the Bavarian Alps, Henry Frankenstein and his assistant Fritz, a hunchback, piece together a human body. Some of the parts are from freshly buried bodies, and some from the bodies of recently hanged criminals. In a laboratory he's built inside a watchtower, Henry desires to create a human, giving this body life through electrical devices. He still needs a brain for his creation. At a nearby school, Henry's former teacher Dr. Waldman shows his class the brain..."
+    },
+    "15": {
+      "title": "Scarface",
+      "image": "https://upload.wikimedia.org/wikipedia/en/7/71/Scarface_-_1983_film.jpg",
+      "director": "Brian De Palma",
+      "lengthminutes": 170,
+      "yearpublished": 1983,
+      "color": true,
+      "description": "In 1980, Cuban refugee and ex-convict Tony Montana arrives in Miami, as part of the Mariel boatlift, where he is sent to a refugee camp with his best friend Manny Ray and their companions Angel and Chi-Chi. The four are released and given green cards in exchange for murdering a former Cuban general at the request of Miami drug lord Frank Lopez. They find work as dishwashers at a restaurant, but are dissatisfied. Tony proclaims that he is meant for bigger things."
     }
   }
 }
