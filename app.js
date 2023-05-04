@@ -14,20 +14,36 @@ function startApp() {
   updateMovieGrid();
 
   //eventlisteners for create
-  document.querySelector("#create-new-post-btn").addEventListener("click", showCreateMovie);
-  document.querySelector("#create-post-form").addEventListener("submit", createMovieClicked);
+  document
+    .querySelector("#create-new-post-btn")
+    .addEventListener("click", showCreateMovie);
+  document
+    .querySelector("#create-post-form")
+    .addEventListener("submit", createMovieClicked);
 
   //eventlisteners for delete
-  document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
-  document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
+  document
+    .querySelector("#form-delete-movie")
+    .addEventListener("submit", deleteMovieClicked);
+  document
+    .querySelector("#form-delete-movie .btn-cancel")
+    .addEventListener("click", cancelDelete);
 
   // eventlisteners for update
-  document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
-  document.querySelector("#update-movie-form .btn-cancel").addEventListener("click", cancelUpdate);
+  document
+    .querySelector("#update-movie-form")
+    .addEventListener("submit", updateMovieClicked);
+  document
+    .querySelector("#update-movie-form .btn-cancel")
+    .addEventListener("click", cancelUpdate);
 
   // adding eventlisteners for search functions
-  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
-  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("keyup", inputSearchChanged);
+  document
+    .querySelector("#input-search")
+    .addEventListener("search", inputSearchChanged);
 
   // adding eventlisteners for sort functions
   document.querySelector("#sort-by").addEventListener("change", sortByChanged);
@@ -62,10 +78,17 @@ function createMovieClicked(event) {
   const color = form.color.value;
 
   createMovie(image, title, description, director, length, year, color);
-
 }
 
-async function createMovie(image, title, description, director, lengthminutes, yearpublished, color) {
+async function createMovie(
+  image,
+  title,
+  description,
+  director,
+  lengthminutes,
+  yearpublished,
+  color
+) {
   const newMovie = {
     image: image,
     title: title,
@@ -86,14 +109,12 @@ async function createMovie(image, title, description, director, lengthminutes, y
   if (response.ok) {
     console.log("Congratulations, new movie was created succesfully!");
     updateMovieGrid();
-  }
-   else {
-     console.log("Something went wrong. Please try again");
-     document.querySelector("#error-message-create").textContent =
+  } else {
+    console.log("Something went wrong. Please try again");
+    document.querySelector("#error-message-create").textContent =
       "Something went wrong. Please try again.";
-    // alert("Something went wrong");
     document.querySelector("#create-post-dialog").showModal();
-   }
+  }
 }
 
 // ========== Delete Function ========== //
@@ -141,11 +162,37 @@ function updateMovieClicked(event) {
   const color = Boolean(form.color.value);
 
   const id = form.getAttribute("data-id");
-  updateMovie(id, title, description, image, director, movieLength, yearpublished, color);
+  updateMovie(
+    id,
+    title,
+    description,
+    image,
+    director,
+    movieLength,
+    yearpublished,
+    color
+  );
 }
 
-async function updateMovie(id, title, description, image, director, lengthminutes, yearpublished, color) {
-  const movieToUpdate = { title, description, image, director, lengthminutes, yearpublished, color }; // movie update to update
+async function updateMovie(
+  id,
+  title,
+  description,
+  image,
+  director,
+  lengthminutes,
+  yearpublished,
+  color
+) {
+  const movieToUpdate = {
+    title,
+    description,
+    image,
+    director,
+    lengthminutes,
+    yearpublished,
+    color,
+  }; // movie update to update
   const json = JSON.stringify(movieToUpdate); // convert the JS objekt to JSON string
   const response = await fetch(`${endpoint}/movies/${id}.json`, {
     method: "PUT",
@@ -155,13 +202,10 @@ async function updateMovie(id, title, description, image, director, lengthminute
   if (response.ok) {
     console.log("Movie succesfully updatet in firebase");
     updateMovieGrid();
-    // hideErrorMessage();
   } else {
     console.log("Something went wrong. Please try again");
     document.querySelector("#error-message-update").textContent =
-      "Something went wrong. Please try again.";;
-    // showErrorMessage("Something went wrong. Please, try again");
-    // alert("Something went wrong");
+      "Something went wrong. Please try again.";
     document.querySelector("#update-movie-dialog").showModal();
   }
 }
@@ -190,13 +234,20 @@ function showMovie(movieObject) {
   );
 
   // add event listeners to .btn-delete and .btn-update
-  document.querySelector("#movies article:last-child .btn-delete").addEventListener("click", deleteClicked);
-  document.querySelector("#movies article:last-child .btn-update").addEventListener("click", updateClicked);
+  document
+    .querySelector("#movies article:last-child .btn-delete")
+    .addEventListener("click", deleteClicked);
+  document
+    .querySelector("#movies article:last-child .btn-update")
+    .addEventListener("click", updateClicked);
 
   function deleteClicked() {
     console.log("Delete button clicked");
-    document.querySelector("#dialog-delete-title").textContent = movieObject.title;
-    document.querySelector("#form-delete-movie").setAttribute("data-id", movieObject.id);
+    document.querySelector("#dialog-delete-title").textContent =
+      movieObject.title;
+    document
+      .querySelector("#form-delete-movie")
+      .setAttribute("data-id", movieObject.id);
     document.querySelector("#dialog-delete-movie").showModal();
   }
 
@@ -269,16 +320,4 @@ function sortByChanged(event) {
   function compareDescription(movie1, movie2) {
     return movie1.description.localeCompare(movie2.description);
   }
-}
-
-
-// ========== handle error functions ========== //
-function showErrorMessage(message) {
-  document.querySelector(".error-message").textContent = message;
-  document.querySelector(".error-message").classList.remove("hide");
-}
-
-function hideErrorMessage() {
-  document.querySelector(".error-message").textContent = "";
-  document.querySelector(".error-message").classList.add("hide");
 }
