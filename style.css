@@ -10,6 +10,18 @@ header h1 {
   font-size: 60px;
 }
 
+footer {
+  background-color: darkorange;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+footer h1 {
+  font-family: "Squada One", cursive;
+  font-size: 150%;
+}
+
 main {
   background-color: darkblue;
 }
