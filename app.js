@@ -230,7 +230,6 @@ function showMovie(movieObject) {
 
 // funktion til at vise detail view
 function showMovieClicked(movieObject) {
-  console.log(movieObject);
   document.getElementById("dialog-detail-image").src = movieObject.image;
   document.getElementById("dialog-detail-title").textContent = movieObject.title;
   document.getElementById("dialog-detail-description").textContent = `${movieObject.description}`;
