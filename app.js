@@ -2,6 +2,7 @@
 // ========== Globale variables ========== //
 
 const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+// const endpoint = "https://test-form-database-f322e-default-rtdb.firebaseio.com/";
 let movies;
 
 // ========== Load & startup ========== //
@@ -115,6 +116,7 @@ async function deleteMovie(id) {
 async function updateMovieGrid() {
   movies = await getMovies();
   showMovies(movies);
+  updateDatalist(movies);
 }
 
 function cancelUpdate() {
@@ -211,6 +213,20 @@ function prepareMovieData(dataObjekt) {
     movieArray.push(movie);
   }
   return movieArray;
+}
+
+function updateDatalist(movieObject) {
+  const datalist = document.querySelector("#directors");
+  const uniqueDirectors = new Set();
+  for (const i in movieObject) {
+    const movieDirector = movieObject[i].director;
+    if (!uniqueDirectors.has(movieDirector)) {
+      uniqueDirectors.add(movieDirector);
+      const option = document.createElement("option");
+      option.value = movieDirector;
+      datalist.appendChild(option);
+    }
+  }
 }
 
 // ========== search functions ========== //
