@@ -15,6 +15,7 @@
     <main>
       <!-- search sort & create actions -->
 
+      <!-- brug evt fieldset -->
       <section class="actions-container">
         <!-- search -->
         <input type="search" id="input-search" placeholder="search by title..." />
@@ -23,12 +24,48 @@
         <button id="create-new-post-btn">Create New Post</button>
 
         <!-- sort -->
-        <select name="sort-by" id="sort-by">
-          <option value="none">None</option>
-          <option value="title">Title</option>
-          <option value="description">Description</option>
-        </select>
+        <div>
+          <label for="sort-by">sort by:</label>
+          <select name="sort-by" id="sort-by">
+            <option value="none">None</option>
+            <option value="title">Title</option>
+            <option value="description">Description</option>
+            <option value="year">Year</option>
+          </select>
+        </div>
       </section>
+
+      <fieldset class="filters-section">
+        <legend>Choose filters</legend>
+        <div>
+          <label for="monochrome">Monochrome only</label>
+          <input type="checkbox" name="monochrome" id="monochrome" onclick="filterByColor()" />
+        </div>
+
+        <div>
+          <label for="eighties">1980's</label>
+          <input type="checkbox" name="eighties" id="eighties" onclick="filterByDecades()" />
+        </div>
+
+        <div>
+          <label for="nineties">1990's</label>
+          <input type="checkbox" name="nineties" id="nineties" onclick="filterByDecades()" />
+        </div>
+
+        <div>
+          <label for="zeroes">2000's</label>
+          <input type="checkbox" name="zeroes" id="zeroes" onclick="filterByDecades()" />
+        </div>
+
+        <div>
+          <label for="tens">2010's</label>
+          <input type="checkbox" name="tens" id="tens" onclick="filterByDecades()" />
+        </div>
+        <div>
+          <label for="twenties">2020's</label>
+          <input type="checkbox" name="twenties" id="twenties" onclick="filterByDecades()" />
+        </div>
+      </fieldset>
 
       <!-- article for posts -->
 
@@ -38,7 +75,7 @@
     <!-- dialog - create new post -->
     <dialog id="create-post-dialog">
       <h2>Create new post</h2>
-      <form action="" id="create-post-form" method="dialog">
+      <form action="" id="create-post-form" method="dialog" autocomplete="on">
         <label for="new-image">Image:</label>
         <input type="url" id="new-image" name="image" placeholder="type in url" required />
 
@@ -49,13 +86,25 @@
         <input type="text" id="new-description" name="description" placeholder="type a description" required />
 
         <label for="new-director">Director:</label>
-        <input type="text" id="new-director" name="director" placeholder="type a director" required />
+        <input type="text" id="new-director" name="director" placeholder="type a director" list="directors" required />
 
         <label for="new-lengthminutes">Length:</label>
-        <input type="number" id="new-lengthminutes" name="lengthminutes" placeholder="type length of movie in minutes" required />
+        <input
+          type="number"
+          id="new-lengthminutes"
+          name="lengthminutes"
+          placeholder="type length of movie in minutes"
+          required
+        />
 
         <label for="new-yearpublished">Year:</label>
-        <input type="number" id="new-yearpublished" name="yearpublished" placeholder="type the year movie was published" required />
+        <input
+          type="number"
+          id="new-yearpublished"
+          name="yearpublished"
+          placeholder="type the year movie was published"
+          required
+        />
 
         <label for="new-color">Color:</label>
         <select name="color" id="new-color" required>
@@ -71,34 +120,62 @@
     <!-- dialog - update movie -->
     <dialog id="update-movie-dialog">
       <h2>Update Movie</h2>
-      <form id="update-movie-form" method="dialog">
+      <form id="update-movie-form" method="dialog" autocomplete="on">
         <label for="update-title">Title:</label>
         <input type="text" name="title" id="update-title" placeholder="type a new title..." required />
 
         <label for="description">Description:</label>
-        <input type="text" name="description" id="update-description" placeholder="type a new description text..." required />
+        <input
+          type="text"
+          name="description"
+          id="update-description"
+          placeholder="type a new description text..."
+          required
+        />
 
         <label for="update-image">Image:</label>
         <input type="url" name="image" id="update-image" placeholder="type a new url address..." required />
 
         <label for="director">Director:</label>
-        <input type="text" name="director" id="update-director" placeholder="type in the name of the director" required />
+        <input
+          list="directors"
+          type="text"
+          name="director"
+          id="update-director"
+          placeholder="type in the name of the director"
+          required
+        />
+        <datalist id="directors"></datalist>
 
         <label for="lengthminutes">Movie lenth:</label>
-        <input type="number" name="lengthminutes" id="update-lengthminutes" placeholder="Type in the movie length in minutes" required />
+        <input
+          type="number"
+          name="lengthminutes"
+          id="update-lengthminutes"
+          placeholder="Type in the movie length in minutes"
+          required
+        />
 
         <label for="yearpublished">Year published:</label>
-        <input type="number" name="yearpublished" id="update-yearpublished" placeholder="Type the year it was published" required />
+        <input
+          type="number"
+          name="yearpublished"
+          id="update-yearpublished"
+          placeholder="Type the year it was published"
+          required
+        />
 
         <label for="color"
           >Is the movie in color:
-          <select name="color" id="update-color">
+          <select name="color" id="update-color" required>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
         </label>
-        <button type="button" class="btn-cancel">Cancel</button>
-        <button type="submit">Update</button>
+        <div id="buttons-container">
+          <button type="button" class="btn-cancel">Cancel</button>
+          <button type="submit">Update</button>
+        </div>
         <p id="error-message-update"></p>
       </form>
     </dialog>
@@ -108,8 +185,10 @@
       <h2>Are you sure you want to delete?!</h2>
       <p id="dialog-delete-title"></p>
       <form action="" method="dialog" id="form-delete-movie">
-        <button type="button" class="btn-cancel">Cancel</button>
-        <button type="submit">Delete</button>
+        <div id="button-container">
+          <button type="button" class="btn-cancel">Cancel</button>
+          <button type="submit">Delete</button>
+        </div>
       </form>
     </dialog>
 

@@ -131,6 +131,15 @@
       "yearpublished": 1996,
       "color": true,
       "description": "Minnesota car salesman Jerry Lundegaard's inept crime falls apart due to his and his henchmen's bungling and the persistent police work of the quite pregnant Marge Gunderson."
+    },
+    "14": {
+      "title": "Frankenstein",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/92/Frankenstein_poster_1931.jpg",
+      "director": "James Whale",
+      "lengthminutes": 70,
+      "yearpublished": 1931,
+      "color": false,
+      "description": "In a village of the Bavarian Alps, Henry Frankenstein and his assistant Fritz, a hunchback, piece together a human body. Some of the parts are from freshly buried bodies, and some from the bodies of recently hanged criminals. In a laboratory he's built inside a watchtower, Henry desires to create a human, giving this body life through electrical devices. He still needs a brain for his creation. At a nearby school, Henry's former teacher Dr. Waldman shows his class the brain of an average human being and the corrupted brain of a criminal for comparison. Henry sends Fritz to steal the healthy brain from Waldman's class. Fritz accidentally damages it, and so brings Henry the corrupt brain."
     }
   }
 }

@@ -35,7 +35,16 @@ img {
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 50px;
-  padding: 35px;
+  padding: 20px;
+  color: white;
+}
+
+.filters-section {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 15px;
+  padding: 10px;
+  color: white;
 }
 
 /* ---------- grid container styling ---------- */
@@ -95,6 +104,18 @@ img {
   to {
     opacity: 1;
   }
+}
+
+/* ---------- styling for article button ---------- */
+
+article > button {
+  background-color: darkblue;
+  color: darkorange;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 3px solid darkorange;
 }
 
 /* ---------- styling for dialog forms ---------- */

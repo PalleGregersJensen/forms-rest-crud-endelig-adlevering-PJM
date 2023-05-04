@@ -4,6 +4,7 @@
 // const endpoint = "https://dummy-movieobjects-default-rtdb.firebaseio.com/";
 
 const endpoint = "https://movies-forms-rest-crud-afl-default-rtdb.europe-west1.firebasedatabase.app/";
+// const endpoint = "https://test-form-database-f322e-default-rtdb.firebaseio.com/";
 let movies;
 
 // ========== Load & startup ========== //
@@ -143,6 +144,7 @@ async function deleteMovie(id) {
 async function updateMovieGrid() {
   movies = await getMovies();
   showMovies(movies);
+  updateDatalist(movies);
 }
 
 function cancelUpdate() {
@@ -276,6 +278,20 @@ function prepareMovieData(dataObjekt) {
   return movieArray;
 }
 
+function updateDatalist(movieObject) {
+  const datalist = document.querySelector("#directors");
+  const uniqueDirectors = new Set();
+  for (const i in movieObject) {
+    const movieDirector = movieObject[i].director;
+    if (!uniqueDirectors.has(movieDirector)) {
+      uniqueDirectors.add(movieDirector);
+      const option = document.createElement("option");
+      option.value = movieDirector;
+      datalist.appendChild(option);
+    }
+  }
+}
+
 // ========== search functions ========== //
 function inputSearchChanged() {
   const value = this.value;
@@ -302,14 +318,17 @@ function sortByChanged(event) {
 
   if (value === "none") {
     updateMovieGrid();
-    console.log(movies);
+    //console.log(movies);
   } else if (value === "title") {
     movies.sort(compareTitle);
-    console.log(movies);
+    //console.log(movies);
     showMovies(movies);
   } else if (value === "description") {
     movies.sort(compareDescription);
-    console.log(movies);
+    //console.log(movies);
+    showMovies(movies);
+  } else if (value === "year") {
+    movies.sort(compareYear);
     showMovies(movies);
   }
 
@@ -320,4 +339,61 @@ function sortByChanged(event) {
   function compareDescription(movie1, movie2) {
     return movie1.description.localeCompare(movie2.description);
   }
+
+  function compareYear(movie1, movie2) {
+    return movie1.yearpublished - movie2.yearpublished;
+  }
+}
+
+// ========== filter functions ==========
+
+//Monochrome
+function filterByColor() {
+  const monochrome = document.querySelector("#monochrome");
+
+  if (monochrome.checked) {
+    const blackAndWhiteMovies = movies.filter(isColor);
+    showMovies(blackAndWhiteMovies);
+  } else if (!monochrome.checked) {
+    showMovies(movies);
+  }
+}
+
+function isColor(movie) {
+  const monochrome = document.querySelector("#monochrome").value;
+  if (!movie.color) {
+    return movie;
+  }
+}
+
+//Decades
+function filterByDecades() {
+  const eighties = document.querySelector("#eighties");
+  const nineties = document.querySelector("#nineties");
+  const zeroes = document.querySelector("#zeroes");
+  const tens = document.querySelector("#tens");
+  const twenties = document.querySelector("#twenties");
+
+  if (eighties.checked || nineties.checked || zeroes.checked || tens.checked || twenties.checked) {
+    const result = movies.filter(checkDecade);
+    showMovies(result);
+  } else {
+    showMovies(movies);
+  }
+
+  function checkDecade(movie) {
+    if (eighties.checked && movie.yearpublished >= 1980 && movie.yearpublished < 1990) {
+      return movie;
+    } else if (nineties.checked && movie.yearpublished >= 1990 && movie.yearpublished < 2000) {
+      return movie;
+    } else if (zeroes.checked && movie.yearpublished >= 2000 && movie.yearpublished < 2010) {
+      return movie;
+    } else if (tens.checked && movie.yearpublished >= 2010 && movie.yearpublished < 2020) {
+      return movie;
+    } else if (twenties.checked && movie.yearpublished >= 2020 && movie.yearpublished < 2030) {
+      return movie;
+    }
+  }
+
+  //showMovies(result)
 }
