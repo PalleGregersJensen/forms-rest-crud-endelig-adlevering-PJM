@@ -15,36 +15,20 @@ function startApp() {
   updateMovieGrid();
 
   //eventlisteners for create
-  document
-    .querySelector("#create-new-post-btn")
-    .addEventListener("click", showCreateMovie);
-  document
-    .querySelector("#create-post-form")
-    .addEventListener("submit", createMovieClicked);
+  document.querySelector("#create-new-post-btn").addEventListener("click", showCreateMovie);
+  document.querySelector("#create-post-form").addEventListener("submit", createMovieClicked);
 
   //eventlisteners for delete
-  document
-    .querySelector("#form-delete-movie")
-    .addEventListener("submit", deleteMovieClicked);
-  document
-    .querySelector("#form-delete-movie .btn-cancel")
-    .addEventListener("click", cancelDelete);
+  document.querySelector("#form-delete-movie").addEventListener("submit", deleteMovieClicked);
+  document.querySelector("#form-delete-movie .btn-cancel").addEventListener("click", cancelDelete);
 
   // eventlisteners for update
-  document
-    .querySelector("#update-movie-form")
-    .addEventListener("submit", updateMovieClicked);
-  document
-    .querySelector("#update-movie-form .btn-cancel")
-    .addEventListener("click", cancelUpdate);
+  document.querySelector("#update-movie-form").addEventListener("submit", updateMovieClicked);
+  document.querySelector("#update-movie-form .btn-cancel").addEventListener("click", cancelUpdate);
 
   // adding eventlisteners for search functions
-  document
-    .querySelector("#input-search")
-    .addEventListener("keyup", inputSearchChanged);
-  document
-    .querySelector("#input-search")
-    .addEventListener("search", inputSearchChanged);
+  document.querySelector("#input-search").addEventListener("keyup", inputSearchChanged);
+  document.querySelector("#input-search").addEventListener("search", inputSearchChanged);
 
   // adding eventlisteners for sort functions
   document.querySelector("#sort-by").addEventListener("change", sortByChanged);
@@ -81,15 +65,7 @@ function createMovieClicked(event) {
   createMovie(image, title, description, director, length, year, color);
 }
 
-async function createMovie(
-  image,
-  title,
-  description,
-  director,
-  lengthminutes,
-  yearpublished,
-  color
-) {
+async function createMovie(image, title, description, director, lengthminutes, yearpublished, color) {
   const newMovie = {
     image: image,
     title: title,
@@ -112,8 +88,7 @@ async function createMovie(
     updateMovieGrid();
   } else {
     console.log("Something went wrong. Please try again");
-    document.querySelector("#error-message-create").textContent =
-      "Something went wrong. Please try again.";
+    document.querySelector("#error-message-create").textContent = "Something went wrong. Please try again.";
     document.querySelector("#create-post-dialog").showModal();
   }
 }
@@ -164,28 +139,10 @@ function updateMovieClicked(event) {
   const color = Boolean(form.color.value);
 
   const id = form.getAttribute("data-id");
-  updateMovie(
-    id,
-    title,
-    description,
-    image,
-    director,
-    movieLength,
-    yearpublished,
-    color
-  );
+  updateMovie(id, title, description, image, director, movieLength, yearpublished, color);
 }
 
-async function updateMovie(
-  id,
-  title,
-  description,
-  image,
-  director,
-  lengthminutes,
-  yearpublished,
-  color
-) {
+async function updateMovie(id, title, description, image, director, lengthminutes, yearpublished, color) {
   const movieToUpdate = {
     title,
     description,
@@ -206,8 +163,7 @@ async function updateMovie(
     updateMovieGrid();
   } else {
     console.log("Something went wrong. Please try again");
-    document.querySelector("#error-message-update").textContent =
-      "Something went wrong. Please try again.";
+    document.querySelector("#error-message-update").textContent = "Something went wrong. Please try again.";
     document.querySelector("#update-movie-dialog").showModal();
   }
 }
@@ -235,21 +191,17 @@ function showMovie(movieObject) {
   `
   );
 
+  // add event listeners to detail view
+  document.querySelector("#movies article:last-child").addEventListener("click", movieClicked);
+
   // add event listeners to .btn-delete and .btn-update
-  document
-    .querySelector("#movies article:last-child .btn-delete")
-    .addEventListener("click", deleteClicked);
-  document
-    .querySelector("#movies article:last-child .btn-update")
-    .addEventListener("click", updateClicked);
+  document.querySelector("#movies article:last-child .btn-delete").addEventListener("click", deleteClicked);
+  document.querySelector("#movies article:last-child .btn-update").addEventListener("click", updateClicked);
 
   function deleteClicked() {
     console.log("Delete button clicked");
-    document.querySelector("#dialog-delete-title").textContent =
-      movieObject.title;
-    document
-      .querySelector("#form-delete-movie")
-      .setAttribute("data-id", movieObject.id);
+    document.querySelector("#dialog-delete-title").textContent = movieObject.title;
+    document.querySelector("#form-delete-movie").setAttribute("data-id", movieObject.id);
     document.querySelector("#dialog-delete-movie").showModal();
   }
 
@@ -265,6 +217,27 @@ function showMovie(movieObject) {
     updateForm.setAttribute("data-id", movieObject.id);
     document.querySelector("#update-movie-dialog").showModal();
   }
+  function movieClicked() {
+    showMovieClicked(movieObject);
+  }
+}
+
+// funktion til at vise detail view
+function showMovieClicked(movieObject) {
+  console.log(movieObject);
+  document.getElementById("dialog-detail-image").src = movieObject.image;
+  document.getElementById("dialog-detail-title").textContent = movieObject.title;
+  document.getElementById("dialog-detail-description").textContent = `${movieObject.description}`;
+  document.getElementById("dialog-detail-director").textContent = `Director: ${movieObject.director}`;
+  document.getElementById("dialog-detail-lengthminutes").textContent = `Runtime: ${movieObject.lengthminutes}`;
+  document.getElementById("dialog-detail-yearpublished").textContent = `Published in: ${movieObject.yearpublished}`;
+  if (movieObject.color === true) {
+    document.getElementById("dialog-detail-color").textContent = `The movie is in color`;
+  } else {
+    document.getElementById("dialog-detail-color").textContent = `The movie is in black and white`;
+  }
+
+  document.querySelector("#dialog-detail").showModal();
 }
 
 // ========== Objekt til array ========== //
