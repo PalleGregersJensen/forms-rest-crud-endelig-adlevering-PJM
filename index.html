@@ -5,12 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" type="image/x-icon" />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet" />
+
+    <!-- style sheets -->
     <link rel="stylesheet" href="style.css" />
     <title>CRUD Movie Database</title>
   </head>
   <body>
     <header>
-      <h1>DataObject CRUD Database</h1>
+      <h1>BUSTBLOCKER</h1>
     </header>
     <main>
       <!-- search sort & create actions -->
@@ -68,9 +75,13 @@
       </fieldset>
 
       <!-- article for posts -->
-
       <div id="movies" class="grid-container"></div>
     </main>
+
+    <!-- footer -->
+    <footer>
+      <h1>Designed by: Jon, Markus & Palle&copy;</h1>
+    </footer>
 
     <!-- dialog - create new post -->
     <dialog id="create-post-dialog">
@@ -113,7 +124,7 @@
         </select>
 
         <button type="submit">Create Post</button>
-        <p id="error-message-create-new"></p>
+        <p id="error-message-create"></p>
       </form>
     </dialog>
 
@@ -176,6 +187,7 @@
           <button type="button" class="btn-cancel">Cancel</button>
           <button type="submit">Update</button>
         </div>
+        <p id="error-message-update"></p>
       </form>
     </dialog>
 
@@ -191,6 +203,28 @@
       </form>
     </dialog>
 
-    <script src="app.js"></script>
+    <!-- dialog - detail view -->
+    <dialog id="dialog-detail">
+      <section class="dialog-detail-grid">
+        <figure><img id="dialog-detail-image" /></figure>
+        <article>
+          <h2 id="dialog-detail-title"></h2>
+          <p id="dialog-detail-description"></p>
+          <section id="dialog-detail-ekstra">
+            <ul>
+              <li id="dialog-detail-director"></li>
+              <li id="dialog-detail-lengthminutes"></li>
+              <li id="dialog-detail-yearpublished"></li>
+              <li id="dialog-detail-color"></li>
+            </ul>
+          </section>
+        </article>
+        <form method="dialog">
+          <button type="submit">Close</button>
+        </form>
+      </section>
+    </dialog>
+
+    <script src="./js/app.js" type="module"></script>
   </body>
 </html>
