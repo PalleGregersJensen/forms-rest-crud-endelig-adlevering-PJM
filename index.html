@@ -15,6 +15,7 @@
     <main>
       <!-- search sort & create actions -->
 
+      <!-- brug evt fieldset -->
       <section class="actions-container">
         <!-- search -->
         <input type="search" id="input-search" placeholder="search by title..." />
@@ -23,12 +24,48 @@
         <button id="create-new-post-btn">Create New Post</button>
 
         <!-- sort -->
-        <select name="sort-by" id="sort-by">
-          <option value="none">None</option>
-          <option value="title">Title</option>
-          <option value="description">Description</option>
-        </select>
+        <div>
+          <label for="sort-by">sort by:</label>
+          <select name="sort-by" id="sort-by">
+            <option value="none">None</option>
+            <option value="title">Title</option>
+            <option value="description">Description</option>
+            <option value="year">Year</option>
+          </select>
+        </div>
       </section>
+
+      <fieldset class="filters-section">
+        <legend>Choose filters</legend>
+        <div>
+          <label for="monochrome">Monochrome only</label>
+          <input type="checkbox" name="monochrome" id="monochrome" onclick="filterByColor()" />
+        </div>
+
+        <div>
+          <label for="eighties">1980's</label>
+          <input type="checkbox" name="eighties" id="eighties" onclick="filterByDecades()" />
+        </div>
+
+        <div>
+          <label for="nineties">1990's</label>
+          <input type="checkbox" name="nineties" id="nineties" onclick="filterByDecades()" />
+        </div>
+
+        <div>
+          <label for="zeroes">2000's</label>
+          <input type="checkbox" name="zeroes" id="zeroes" onclick="filterByDecades()" />
+        </div>
+
+        <div>
+          <label for="tens">2010's</label>
+          <input type="checkbox" name="tens" id="tens" onclick="filterByDecades()" />
+        </div>
+        <div>
+          <label for="twenties">2020's</label>
+          <input type="checkbox" name="twenties" id="twenties" onclick="filterByDecades()" />
+        </div>
+      </fieldset>
 
       <!-- article for posts -->
 

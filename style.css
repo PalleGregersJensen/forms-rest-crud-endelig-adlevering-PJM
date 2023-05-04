@@ -35,7 +35,16 @@ img {
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 50px;
-  padding: 35px;
+  padding: 20px;
+  color: white;
+}
+
+.filters-section {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 15px;
+  padding: 10px;
+  color: white;
 }
 
 /* ---------- grid container styling ---------- */
