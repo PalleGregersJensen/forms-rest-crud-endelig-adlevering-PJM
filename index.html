@@ -105,6 +105,8 @@
           id="new-lengthminutes"
           name="lengthminutes"
           placeholder="type length of movie in minutes"
+          pattern="\d+"
+          maxlength="3"
           required
         />
 
@@ -114,6 +116,8 @@
           id="new-yearpublished"
           name="yearpublished"
           placeholder="type the year movie was published"
+          pattern="\d+"
+          maxlength="4"
           required
         />
 
@@ -164,6 +168,8 @@
           name="lengthminutes"
           id="update-lengthminutes"
           placeholder="Type in the movie length in minutes"
+          pattern="\d+"
+          maxlength="3"
           required
         />
 
@@ -173,6 +179,9 @@
           name="yearpublished"
           id="update-yearpublished"
           placeholder="Type the year it was published"
+          pattern="\d+"
+          maxlength="4"
+          minlength="4"
           required
         />
 
