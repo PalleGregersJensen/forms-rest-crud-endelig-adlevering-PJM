@@ -43,7 +43,7 @@ footer h1 {
 }
 
 article {
-  font-family: var(--body-font-family);
+  font-family: var(--overskrift-font-family);
 }
 
 h1 {
@@ -54,13 +54,16 @@ h1 {
 }
 
 h2 {
-  font-family: var(--overskrift-font-family);
+  font-family: var(--header-font-family);
 }
 
 h3 {
   margin: 0;
 }
 
+p {
+  font-family: var(--body-font-family);
+}
 img {
   width: 100%;
   height: auto;
@@ -146,11 +149,12 @@ img {
 /* ---------- styling for article button ---------- */
 
 article > button {
+  font-family: var(--header-font-family);
   background-color: darkblue;
   color: darkorange;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   border: 3px solid darkorange;
 }
@@ -166,7 +170,7 @@ dialog {
 
 /* Style for the dialog's heading */
 dialog h2 {
-  font-size: 24px;
+  font-size: 35px;
   font-weight: bold;
   margin-top: 0;
   color: darkblue;
@@ -199,25 +203,56 @@ form button {
 }
 /* Style for the form's cancel button */
 form .btn-cancel {
+  font-family: var(--header-font-family);
   background-color: darkblue;
   color: darkorange;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 }
 
 /* Style for the form's submit button */
 form button[type="submit"] {
+  font-family: var(--header-font-family);
   margin-top: auto;
   background-color: darkblue;
   color: darkorange;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 }
 
+/* styling for detail view */
+ul li {
+  list-style-type: none;
+}
+#dialog-detail-ekstra ul {
+  padding-left: 0;
+}
+
+#dialog-detail-ekstra li {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+#dialog-detail-ekstra li span {
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
+
+figure {
+  border: 1px solid black;
+  padding: 6px;
+  background-color: black;
+  border-radius: 10px;
+}
 /* Styling af error-messages */
 #error-message-create {
   font-size: 2em;
