@@ -189,9 +189,9 @@ function showMovieClicked(movieObject) {
   document.getElementById("dialog-detail-image").src = movieObject.image;
   document.getElementById("dialog-detail-title").textContent = movieObject.title;
   document.getElementById("dialog-detail-description").textContent = `${movieObject.description}`;
-  document.getElementById("dialog-detail-director").textContent = `Director: ${movieObject.director}`;
-  document.getElementById("dialog-detail-lengthminutes").textContent = `Runtime: ${movieObject.lengthminutes}`;
-  document.getElementById("dialog-detail-yearpublished").textContent = `Published in: ${movieObject.yearpublished}`;
+  document.getElementById("dialog-detail-director").textContent = `${movieObject.director}`;
+  document.getElementById("dialog-detail-lengthminutes").textContent = `${movieObject.lengthminutes}`;
+  document.getElementById("dialog-detail-yearpublished").textContent = `${movieObject.yearpublished}`;
   if (movieObject.color === true) {
     document.getElementById("dialog-detail-color").textContent = `The movie is in color`;
   } else {
